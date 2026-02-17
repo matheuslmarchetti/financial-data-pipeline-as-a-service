@@ -14,5 +14,6 @@ def create(
     return create_user(
         db=db,
         name=user.name,
-        email=user.email
+        email=user.email,
+        password=user.password
     )
