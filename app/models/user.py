@@ -1,7 +1,12 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from app.db.base import Base
+import enum
+from sqlalchemy import Enum
 
+class UserRole(str, enum.Enum):
+    admin = "admin"
+    user = "user"
 
 class User(Base):
     __tablename__ = "users"
@@ -10,6 +15,8 @@ class User(Base):
     name = Column(String, nullable=False)
     email = Column(String, nullable=False, unique=True)
     password_hash = Column(String, nullable=False)
+    role = Column(Enum(UserRole), default=UserRole.user, nullable=False)
+
 
 
     transactions = relationship(
