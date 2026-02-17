@@ -31,7 +31,8 @@ def create(
         return create_transaction(
             db=db,
             description=transaction.description,
-            amount=transaction.amount
+            amount=transaction.amount,
+            user_id=transaction.user_id
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

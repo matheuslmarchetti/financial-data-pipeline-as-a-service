@@ -8,14 +8,16 @@ from sqlalchemy.exc import SQLAlchemyError
 def create_transaction(
     db: Session,
     description: str,
-    amount: float
+    amount: float,
+    user_id: int
 ) -> Transaction:
     if amount <= 0:
         raise ValueError("Amount must be greater than zero")
     try:
         transaction = Transaction(
             description=description,
-            amount=amount
+            amount=amount,
+            user_id=user_id
         )
 
         db.add(transaction)

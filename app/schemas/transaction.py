@@ -10,6 +10,7 @@ class TransactionResponse(BaseModel):
     id: int
     description: str
     amount: float
+    user_id: int
 
     class Config:
         from_attributes = True
